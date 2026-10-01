@@ -1,30 +1,41 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        // Reference views matching your XML IDs
         TextView textView = findViewById(R.id.text);
-        Button button = findViewById(R.id.button1);
-        button.setOnClickListener(v -> {
-            textView.setText("sveikas");
+        Button btnChangeText = findViewById(R.id.button1);
+        Button btnChangeColor = findViewById(R.id.button2);
+
+        // Button 1: "Keisti teksta" (Changes text string)
+        btnChangeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setText("Tekstas pakeistas!");
+            }
         });
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Button 2: "Keisti spalva" (Changes text color to Red)
+        btnChangeColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setTextColor(Color.RED);
+
+                // Alternatively, use any hex color:
+                // textView.setTextColor(Color.parseColor("#FF0000"));
+            }
         });
     }
 }
