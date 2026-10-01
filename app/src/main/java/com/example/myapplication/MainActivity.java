@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //comment for revert
         // Button 3: "Keisti fono spalva" (Changes text background color)
         btnChangeBgColor.setOnClickListener(new View.OnClickListener() {
             @Override
